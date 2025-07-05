@@ -21,6 +21,8 @@ prompt_template = ChatPromptTemplate.from_messages(
      ("user", "{text}")]
 )
 
+
+# input
 user_text = "give me life advice.  summarize in 2 sentences"
 prompt = prompt_template.invoke({"text": user_text})
 
