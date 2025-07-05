@@ -5,6 +5,7 @@ from langchain.chat_models import init_chat_model
 from langchain_core.prompts import ChatPromptTemplate
 from data.system_templates import system_prompts
 from data.me import me
+from write_to_file import write_to_file
 
 
 # config
@@ -14,7 +15,6 @@ model = init_chat_model("claude-sonnet-4-20250514", model_provider="anthropic")
 
 
 # prompt
-# system_template = system_prompts.get("translate")
 system_template = str(me.items())
 
 prompt_template = ChatPromptTemplate.from_messages(
@@ -23,16 +23,12 @@ prompt_template = ChatPromptTemplate.from_messages(
 )
 
 user_text = "give me life advice.  summarize in 2 sentences"
-# prompt = prompt_template.invoke({"language": "French", "text": "hi!"})
 prompt = prompt_template.invoke({"text": user_text})
 
 
 # output
-
-# print(prompt)
-# print(prompt.to_messages())
-
 response = model.invoke(prompt)
-print(response.content)
+output_text = response.content
 
-
+write_to_file(output_text)
+print("wrote response to output.txt")
