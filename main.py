@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain.chat_models import init_chat_model
 from langchain_core.prompts import ChatPromptTemplate
-from data.system_templates import system_prompts
 from data.me import me
 from write_to_file import write_to_file
 
